@@ -320,16 +320,4 @@ footer .text {
         padding: 0.5rem;
         text-align: center;
     }
-
-    #projects .box {
-        flex: 0 0 14rem;
-    }
-
-    section {
-        padding: 6rem 1rem; /* Adjust padding for smaller screens */
-    }
-
-    #projects {
-        padding: 6rem 1rem; /* Adjust padding for smaller screens */
-    }
 }
