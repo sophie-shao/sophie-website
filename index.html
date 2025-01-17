@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Responsive Personal Website</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    </head>
+    <body>
+
+        <!-- navigation menu-->
+        <nav>
+            <div class="nav-container">
+                <div class="links">
+                    <div class="link"><a href="#about">About</a></div>
+                    <div class="link"><a href="#projects">Projects</a></div>
+                    <div class="link"><a href="./2027-Sophie-Shao-Resume.pdf" target="blank">Resume</a></div>
+                    <div class="link"><a href="#misc">Misc</a></div>
+                </div>
+                <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+            </div>
+            <div class="dropdown">
+                <div class="links">
+                    <a href="#about">About Me</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#misc">Misc</a>
+                    <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+                </div>
+            </div>
+        </nav>
+
+        <section class="about" id="about">
+            <div class="main-container">
+                <div class="image">
+                    <img src="me.jpg" alt="">
+                </div>
+                <div class="content">
+                    <h1 data-aos="fade-left">
+                        Sophie Shao
+                    </h1>
+                    <p>
+                        Hi! I'm an undergrad at Brown University studying 
+                        Applied Mathematics-Computer Science. I am interested
+                        in computer vision, software development, and UI/UX design. 
+                        I enjoy the creative and technical process of turning ideas into 
+                        functional solutions. I'm excited to 
+                        continue exploring these fields and can't wait to work 
+                        on more projects!
+                    </p>
+                    <br>
+                    <p>
+
+                    </p>
+                    <div class="social-links">
+                        <a href="https://github.com/sophie-shao">
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sophie-shao-2a88002a1/">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </a>
+                        <a href="https://www.instagram.com/sophie.shao_/?next=%2F">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRlQXxwdBVPlTcntVKjJCXbCcrWKHcVZnHtsnfMHzqmFrrnvkVkwrCbFchnSswnGTQqrdsb">
+                            <i class="fa-solid fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Projects Section Start-->
+
+        <section class="projects" id="projects">
+            <div class="content">
+                <div class="title"><span>Projects</span></div>
+                <div class="boxes">
+                    <div class="box">
+                        <a href="https://github.com/sophie-shao/cv-final-project.git" target="_blank" class="project-box">
+                            <picture>
+                                <img src="depth.png" alt="cv project">
+                            </picture>
+                            <h4>Depth-Based Portrait Mode Filter</h4>
+                            <h5><em>Python</em></h5>
+                            <p>
+                                We sought to achieve a portrait mode filter in two ways, 
+                                through stereo vision and through machine learning, 
+                                and in comparing our results we aimed to generate a better understanding 
+                                of the relative merits of each approach and the factors that influence 
+                                performance in each case.
+                            </p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Misc Section Start-->
+
+        <section class="misc" id="misc">
+            <div class="content">
+                <div class="title"><span>Misc</span></div>
+                <div class="boxes">
+                    <div class="box">
+                            <picture>
+                                <img src="shoes.jpg" alt="shoes">
+                            </picture>
+                            <h5>Painted Dragon Shoes</h5>
+                    </div>
+                    <div class="box">
+                        <picture>
+                            <img src="waterbottle.jpg" alt="ensci">
+                        </picture>
+                        <h5>Enviornmental Club Design</h5>
+                    </div>
+                    <div class="box">
+                        <picture>
+                            <img src="hand.jpg" alt="hand">
+                        </picture>
+                        <h5>Skeleton Charcoal Study</h5>
+                    </div>
+                    <div class="box">
+                        <picture>
+                            <img src="study.jpg" alt="study">
+                        </picture>
+                        <h5>Still Life Charcoal Study</h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--Footer Section Start-->
+        <footer>
+            <div class="text">
+                <span>Created By
+                    <a href="#">Me</a>
+                    |&#169; 2025 All Rights Reserved
+                </span>
+            </div>
+        </footer>
+
+
+    </body>
+</html>
