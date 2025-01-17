@@ -142,7 +142,7 @@ section {
 
 
 .main-container .image img {
-    width: calc(20vw + 100px);
+    width: calc(22vw + 100px);
     height: calc(20vw + 100px);
     border-radius: 50%;
     object-fit: cover;
