@@ -126,7 +126,7 @@ nav {
 
 section {
     padding: 5rem 1rem;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: auto;
 }
 
@@ -142,7 +142,7 @@ section {
 
 
 .main-container .image img {
-    width: calc(22vw + 100px);
+    width: calc(20vw + 100px);
     height: calc(20vw + 100px);
     border-radius: 50%;
     object-fit: cover;
@@ -155,7 +155,7 @@ section {
 
 .main-container .content {
     color: black;
-    width: 55%;
+    width: 50%;
     max-width: 56.25rem;
 }
 
@@ -166,6 +166,7 @@ section {
 .content p {
     font-size: 1.1rem;
     margin: auto;
+    
 }
 
 .social-links i {
@@ -201,6 +202,7 @@ section .content {
     margin-bottom: 1rem;
     color: black;
     text-align: center;
+    transition: 0.4s linear;
 }
 
 .projects .boxes {
@@ -252,6 +254,7 @@ section .content {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    
 }
 
 .misc .boxes .box {
