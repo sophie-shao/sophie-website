@@ -169,8 +169,8 @@ section {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     background-color: transparent;
     border-radius: 50%;
     color: black;
@@ -321,7 +321,6 @@ footer .text {
         text-align: center;
     }
 }
-
 /* For very large screens */
 @media (min-width: 1400px) {
     section {
@@ -347,4 +346,3 @@ footer .text {
       padding: 2rem 1.5rem;
     }
   }
-  
