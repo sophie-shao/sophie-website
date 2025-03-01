@@ -321,3 +321,30 @@ footer .text {
         text-align: center;
     }
 }
+
+/* For very large screens */
+@media (min-width: 1400px) {
+    section {
+      max-width: 1400px;
+      padding: 6rem 2rem;
+    }
+    
+    .main-container {
+      gap: 4rem;
+    }
+    
+    .content h1 {
+      font-size: 2.5rem;
+    }
+    
+    .content p {
+      font-size: 1.3rem;
+    }
+    
+    /* Make project boxes larger but maintain grid */
+    .projects .boxes .box, .misc .boxes .box {
+      width: 24rem;
+      padding: 2rem 1.5rem;
+    }
+  }
+  
