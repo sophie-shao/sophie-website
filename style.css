@@ -234,10 +234,12 @@ section .content {
 }
 .projects h5 {
     color: black;
+    padding: 0.2rem;
 }
 
 .projects h4 {
     color: black;
+    padding: 0.2rem;
 }
 .projects p {
     font-size: 0.8rem;
