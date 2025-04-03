@@ -293,7 +293,7 @@ footer .text {
 }
 
 
-@media (max-width: 576px) {
+@media (max-width: 700px) {
 
     .social-links i {
         width: 2rem;
