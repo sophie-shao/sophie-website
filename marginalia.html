@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marginalia | Sophie Shao</title>
+  
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Font Awesome for social icons (if needed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    /* Marginalia Page Specific Styles */
+    
+    /* Animation Keyframes */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    @keyframes scaleIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(var(--rotation, 0deg));
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(var(--rotation, 0deg));
+      }
+    }
+    
+    .marginalia-hero {
+      position: relative;
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: var(--cream);
+      padding: 120px 24px 40px;
+      text-align: center;
+    }
+    
+    .marginalia-hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 6vw, 64px);
+      font-style: italic;
+      font-weight: 700;
+      color: var(--sage);
+      margin: 0;
+      letter-spacing: -1px;
+      animation: fadeInUp 1s ease-out 0.3s both;
+      font-family: "Playfair Display", Georgia, serif;
+    }
+    
+    .marginalia-hero p {
+      font-family: var(--display);
+      font-size: clamp(1.2rem, 2.5vw, 28px);
+      font-style: italic;
+      font-weight: 600;
+      color: var(--rose);
+      margin: 12px 0 0;
+      animation: fadeInUp 1s ease-out 0.6s both;
+      font-family: "Playfair Display", Georgia, serif;
+    }
+    
+    .marginalia-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 40px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px 40px;
+      align-items: start;
+    }
+    
+    .marginalia-item {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+    
+    .marginalia-item:nth-child(1) { animation-delay: 0.2s; }
+    .marginalia-item:nth-child(2) { animation-delay: 0.4s; }
+    .marginalia-item:nth-child(3) { animation-delay: 0.6s; }
+    .marginalia-item:nth-child(4) { animation-delay: 0.8s; }
+    .marginalia-item:nth-child(5) { animation-delay: 1.0s; }
+    .marginalia-item:nth-child(6) { animation-delay: 1.2s; }
+    
+    /* Polaroid card with varying heights */
+    .marginalia-item .polaroid {
+      position: relative;
+      width: 100%;
+      background: #f5ede4;
+      padding: 12px 12px 30px 12px;
+      box-shadow: 0px 4px 15px rgba(61, 43, 31, 0.15);
+      border-radius: 2px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .marginalia-item .polaroid:hover {
+      transform: scale(1.02) rotate(0deg) !important;
+      box-shadow: 0px 8px 30px rgba(61, 43, 31, 0.25);
+    }
+    
+    .marginalia-item .polaroid:hover .tape {
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    /* Different aspect ratios for each polaroid */
+    .marginalia-item:nth-child(1) .polaroid {
+      aspect-ratio: 0.8;
+      --rotation: -3.5deg;
+    }
+    .marginalia-item:nth-child(2) .polaroid {
+      aspect-ratio: 0.9;
+      --rotation: 4.2deg;
+    }
+    .marginalia-item:nth-child(3) .polaroid {
+      aspect-ratio: 0.8;
+      --rotation: -2.8deg;
+    }
+    .marginalia-item:nth-child(4) .polaroid {
+      aspect-ratio: 0.85;
+      --rotation: 3.1deg;
+    }
+    .marginalia-item:nth-child(5) .polaroid {
+      aspect-ratio: 0.95;
+      --rotation: -4.5deg;
+    }
+    .marginalia-item:nth-child(6) .polaroid {
+      aspect-ratio: 0.82;
+      --rotation: 2.3deg;
+    }
+    
+    /* Image inside polaroid */
+    .marginalia-item .polaroid img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 1px;
+      display: block;
+      flex-shrink: 0;
+    }
+    
+    /* Text at bottom of polaroid - centered vertically */
+    .marginalia-item .polaroid .label-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 40px;
+      padding: 4px 0;
+    }
+    
+    .marginalia-item .polaroid .label {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(0.9rem, 1.3vw, 18px);
+      font-weight: 400;
+      color: var(--brown);
+      text-align: center;
+      line-height: 1.2;
+      padding: 0 4px;
+    }
+    
+    /* Transparent tape at top */
+    .marginalia-item .tape {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 35%;
+      height: 28px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(200, 190, 180, 0.3);
+      border-radius: 1px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(2px);
+      pointer-events: none;
+    }
+    
+    /* Different rotations for each polaroid with varying offsets */
+    .marginalia-item:nth-child(1) .polaroid {
+      transform: rotate(-3.5deg);
+      margin-top: 10px;
+      animation: scaleIn 0.8s ease-out 0.2s both;
+    }
+    .marginalia-item:nth-child(1) .tape {
+      transform: translateX(-50%) rotate(2deg);
+    }
+    
+    .marginalia-item:nth-child(2) .polaroid {
+      transform: rotate(4.2deg);
+      margin-top: 25px;
+      animation: scaleIn 0.8s ease-out 0.4s both;
+    }
+    .marginalia-item:nth-child(2) .tape {
+      transform: translateX(-50%) rotate(-3deg);
+    }
+    
+    .marginalia-item:nth-child(3) .polaroid {
+      transform: rotate(-2.8deg);
+      margin-top: 10px;
+      padding-bottom: 30px;
+      animation: scaleIn 0.8s ease-out 0.6s both;
+    }
+    .marginalia-item:nth-child(3) .tape {
+      transform: translateX(-50%) rotate(4deg);
+    }
+    
+    .marginalia-item:nth-child(4) .polaroid {
+      transform: rotate(3.1deg);
+      margin-top: 30px;
+      animation: scaleIn 0.8s ease-out 0.8s both;
+    }
+    .marginalia-item:nth-child(4) .tape {
+      transform: translateX(-50%) rotate(-2deg);
+    }
+    
+    .marginalia-item:nth-child(5) .polaroid {
+      transform: rotate(-4.5deg);
+      margin-top: 15px;
+      animation: scaleIn 0.8s ease-out 1.0s both;
+    }
+    .marginalia-item:nth-child(5) .tape {
+      transform: translateX(-50%) rotate(3.5deg);
+    }
+    
+    .marginalia-item:nth-child(6) .polaroid {
+      transform: rotate(2.3deg);
+      margin-top: 20px;
+      animation: scaleIn 0.8s ease-out 1.2s both;
+    }
+    .marginalia-item:nth-child(6) .tape {
+      transform: translateX(-50%) rotate(-4deg);
+    }
+    
+    /* Hover effect - override the animation on hover */
+    .marginalia-item .polaroid:hover {
+      transform: rotate(0deg) scale(1.02) !important;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0px 6px 25px rgba(61, 43, 31, 0.2);
+    }
+    
+    .marginalia-item .polaroid:hover .tape {
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    /* Responsive - 2 per row on smaller screens */
+    @media (max-width: 900px) {
+      .marginalia-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px 35px;
+        padding: 20px 30px 60px;
+      }
+      
+      /* Reset some aspect ratios for tablet */
+      .marginalia-item:nth-child(1) .polaroid { aspect-ratio: 0.85; }
+      .marginalia-item:nth-child(2) .polaroid { aspect-ratio: 0.9; }
+      .marginalia-item:nth-child(3) .polaroid { aspect-ratio: 0.85; }
+      .marginalia-item:nth-child(4) .polaroid { aspect-ratio: 0.88; }
+      .marginalia-item:nth-child(5) .polaroid { aspect-ratio: 0.92; }
+      .marginalia-item:nth-child(6) .polaroid { aspect-ratio: 0.84; }
+      
+      .marginalia-item:nth-child(1) .polaroid { margin-top: 8px; }
+      .marginalia-item:nth-child(2) .polaroid { margin-top: 20px; }
+      .marginalia-item:nth-child(3) .polaroid { margin-top: 8px; }
+      .marginalia-item:nth-child(4) .polaroid { margin-top: 25px; }
+      .marginalia-item:nth-child(5) .polaroid { margin-top: 12px; }
+      .marginalia-item:nth-child(6) .polaroid { margin-top: 16px; }
+      
+      .marginalia-item .polaroid .label-wrapper {
+        min-height: 32px;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .marginalia-hero {
+        padding: 100px 20px 30px;
+        min-height: 160px;
+      }
+      
+      .marginalia-grid {
+        gap: 24px 25px;
+        padding: 20px 20px 40px;
+      }
+      
+      .marginalia-item .polaroid {
+        padding: 10px 10px 24px 10px;
+      }
+      
+      .marginalia-item .polaroid .label {
+        font-size: 0.85rem;
+      }
+      
+      .marginalia-item .tape {
+        height: 22px;
+        top: -6px;
+        width: 30%;
+      }
+      
+      .marginalia-item .polaroid .label-wrapper {
+        min-height: 28px;
+      }
+      
+      .marginalia-item:nth-child(3) .polaroid {
+        padding-bottom: 24px;
+      }
+      
+      /* Reset aspect ratios for mobile */
+      .marginalia-item:nth-child(1) .polaroid { aspect-ratio: 0.88; }
+      .marginalia-item:nth-child(2) .polaroid { aspect-ratio: 0.92; }
+      .marginalia-item:nth-child(3) .polaroid { aspect-ratio: 0.88; }
+      .marginalia-item:nth-child(4) .polaroid { aspect-ratio: 0.9; }
+      .marginalia-item:nth-child(5) .polaroid { aspect-ratio: 0.95; }
+      .marginalia-item:nth-child(6) .polaroid { aspect-ratio: 0.86; }
+      
+      .marginalia-item:nth-child(1) .polaroid { margin-top: 5px; }
+      .marginalia-item:nth-child(2) .polaroid { margin-top: 15px; }
+      .marginalia-item:nth-child(3) .polaroid { margin-top: 5px; }
+      .marginalia-item:nth-child(4) .polaroid { margin-top: 18px; }
+      .marginalia-item:nth-child(5) .polaroid { margin-top: 8px; }
+      .marginalia-item:nth-child(6) .polaroid { margin-top: 12px; }
+    }
+    
+    @media (max-width: 480px) {
+      .marginalia-hero {
+        padding: 80px 16px 20px;
+        min-height: 130px;
+      }
+      
+      .marginalia-hero h1 {
+        font-size: 2.2rem;
+      }
+      
+      .marginalia-hero p {
+        font-size: 1rem;
+      }
+      
+      .marginalia-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px 18px;
+        padding: 10px 12px 30px;
+      }
+      
+      .marginalia-item .polaroid {
+        padding: 8px 8px 18px 8px;
+      }
+      
+      .marginalia-item .polaroid .label {
+        font-size: 0.7rem;
+      }
+      
+      .marginalia-item .tape {
+        height: 18px;
+        top: -5px;
+        width: 28%;
+      }
+      
+      .marginalia-item .polaroid .label-wrapper {
+        min-height: 22px;
+      }
+      
+      .marginalia-item:nth-child(3) .polaroid {
+        padding-bottom: 18px;
+      }
+      
+      .marginalia-item:nth-child(1) .polaroid { margin-top: 3px; }
+      .marginalia-item:nth-child(2) .polaroid { margin-top: 10px; }
+      .marginalia-item:nth-child(3) .polaroid { margin-top: 3px; }
+      .marginalia-item:nth-child(4) .polaroid { margin-top: 12px; }
+      .marginalia-item:nth-child(5) .polaroid { margin-top: 5px; }
+      .marginalia-item:nth-child(6) .polaroid { margin-top: 8px; }
+    }
+    
+    @media (max-width: 380px) {
+      .marginalia-grid {
+        gap: 12px 14px;
+      }
+      
+      .marginalia-item .polaroid {
+        padding: 6px 6px 14px 6px;
+      }
+      
+      .marginalia-item .polaroid .label {
+        font-size: 0.6rem;
+      }
+      
+      .marginalia-item .tape {
+        height: 14px;
+        top: -4px;
+        width: 25%;
+      }
+      
+      .marginalia-item .polaroid .label-wrapper {
+        min-height: 18px;
+      }
+      
+      .marginalia-item:nth-child(3) .polaroid {
+        padding-bottom: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a class="brand" href="index.html" aria-label="Sophie Shao home">Sophie Shao</a>
+    
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link" href="index.html#work">Work</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link active" href="marginalia.html">Marginalia</a>
+      <a class="nav-link" href="Sophie_Shao_Resume.pdf" target="_blank">Resume</a>
+      <a class="nav-link" href="mailto:sophie_shao@brown.edu">Contact</a>
+    </nav>
+  </header>
+  
+  <main>
+    <section class="marginalia-hero">
+      <h1>Marginalia</h1>
+      <p>smaller notes from the creator</p>
+    </section>
+    
+    <section class="marginalia-grid">
+      <!-- Nezha Embroidery -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/nezha.jpg" alt="Nezha embroidery artwork" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Nezha Embroidery</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Environmental Club Design -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/waterbottle.jpg" alt="Environmental Club tumbler design" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Environmental Club Design</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Painted Dragon Shoes -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/shoes.JPG" alt="Painted dragon shoes" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Painted Dragon Shoes</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Skeleton Charcoal Study -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/hand.jpg" alt="Charcoal study of a skeleton" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Skeleton Charcoal Study</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Hike in Snowdon -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/wales.jpg" alt="Mountain landscape during a hike in Snowdon, Wales" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Hike in Snowdon, Wales</span>
+          </div>
+        </div>
+      </article>
+      
+      <!-- Senna Honda NSX -->
+      <article class="marginalia-item">
+        <div class="polaroid">
+          <div class="tape" aria-hidden="true"></div>
+          <img src="images/senna.jpeg" alt="Illustration of a red Senna Honda NSX" loading="lazy">
+          <div class="label-wrapper">
+            <span class="label">Senna Honda NSX</span>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+  
+  <footer class="footer" id="contact">
+    <div class="footer-main">
+      <div class="footer-intro">
+        <a class="footer-brand" href="index.html">Sophie Shao</a>
+        <p>applied math &amp; computer science, Brown<br>University</p>
+      </div>
+      
+      <div class="footer-links">
+        <div>
+          <p class="footer-heading">SITE</p>
+          <a href="index.html#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="marginalia.html">Marginalia</a>
+          <a href="Sophie_Shao_Resume.pdf" target="_blank">Resume</a>
+          <a href="index.html#contact">Contact</a>
+        </div>
+        
+        <div>
+          <p class="footer-heading">CONTACT</p>
+          <a href="mailto:sophie_shao@brown.edu">Email</a>
+          <a href="https://www.linkedin.com/in/sophiewshao/" aria-label="LinkedIn">LinkedIn</a>
+          <a href="https://github.com/sophie-shao" aria-label="Github">Github</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>bound &amp; printed, 2026 — made with care</p>
+    </div>
+  </footer>
+</body>
+</html>
