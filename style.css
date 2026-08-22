@@ -329,6 +329,16 @@
     object-fit: cover;
   }
   
+  /* OLEEP image specific styles - show full image without cropping */
+  .project-image.oleep-image {
+    background: var(--cream);
+  }
+  
+  .project-image.oleep-image img {
+    object-fit: contain;
+    padding: 4px;
+  }
+  
   .project-image-right .project-image {
     justify-self: end;
   }
