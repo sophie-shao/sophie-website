@@ -1,155 +1,279 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <meta charset="UTF-8"/>
-        <title>Sophie Shao</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    </head>
-    <body>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sophie Shao</title>
 
-        <!-- navigation menu-->
-        <nav>
-            <div class="nav-container">
-                <div class="links">
-                    <div class="link"><a href="#about">About</a></div>
-                    <div class="link"><a href="#projects">Projects</a></div>
-                    <div class="link"><a href="./Sophie_Shao_Resume_2027.pdf" target="blank">Resume</a></div>
-                    <div class="link"><a href="#misc">Misc</a></div>
-                </div>
-                <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
-            </div>
-            <div class="dropdown">
-                <div class="links">
-                    <a href="#about">About Me</a>
-                    <a href="#projects">Projects</a>
-                    <a href="#misc">Misc</a>
-                    <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
-                </div>
-            </div>
-        </nav>
+  <link rel="stylesheet" href="global.css">
+  <link rel="stylesheet" href="styleguide.css">
+  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Animation Keyframes */
+    @keyframes circleIn {
+      0% {
+        opacity: 0;
+        transform: rotate(-38deg) scale(0.5) translateY(30px);
+      }
+      60% {
+        opacity: 0.8;
+        transform: rotate(-38deg) scale(1.1) translateY(-5px);
+      }
+      100% {
+        opacity: 1;
+        transform: rotate(-38deg) scale(1) translateY(0);
+      }
+    }
 
-        <section class="about" id="about">
-            <div class="main-container">
-                <div class="image">
-                    <img src="images/me.jpg" alt="headshot">
-                </div>
-                <div class="content">
-                    <h1 data-aos="fade-left">
-                        Sophie Shao
-                    </h1>
-                    <p>
-                        Hi! I'm an undergrad at Brown University studying 
-                        Applied Mathematics-Computer Science. I am interested
-                        in computer vision, full-stack development, and UI/UX design. 
-                        I enjoy the creative and technical process of turning ideas into 
-                        functional solutions. I'm excited to 
-                        continue exploring these fields and can't wait to work 
-                        on more projects!
-                    </p>
-                    <div class="social-links">
-                        <a href="https://github.com/sophie-shao">
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/sophie-shao-2a88002a1/">
-                            <i class="fa-brands fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.instagram.com/sophie.shao_/?next=%2F">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="https://mail.google.com/mail/u/0/#inbox?compose=DmwnWrRlQXxwdBVPlTcntVKjJCXbCcrWKHcVZnHtsnfMHzqmFrrnvkVkwrCbFchnSswnGTQqrdsb">
-                            <i class="fa-solid fa-envelope"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
 
-        <!--Projects Section Start-->
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
 
-        <section class="projects" id="projects">
-            <div class="content">
-                <div class="title"><span>Projects</span></div>
-                <div class="boxes">
-                    <div class="box">
-                        <a href="https://github.com/sophie-shao/cv-final-project.git" target="_blank" class="project-box">
-                            <picture>
-                                <img src="images/depth.png" alt="cv">
-                            </picture>
-                            <h4>Depth-Based Portrait Mode Filter</h4>
-                            
-                            <h5><em>Python, PyTorch, NumPy, CV2</em></h5>
-                            <p>
-                                We sought to achieve a portrait mode filter in two ways, 
-                                through stereo vision and through machine learning, 
-                                and in comparing our results we aimed to generate a better understanding 
-                                of the relative merits of each approach and the factors that influence 
-                                performance in each case.
-                            </p>
-                        </a>
-                    </div>
-                    <div class="box">
-                        <a href="https://www.figma.com/proto/jHqC6tj3FW3P8N9Nmy6iiK/OLEEP-Design-Progress?node-id=15-2&p=f&t=Ds0U2dt9hGHkcdOl-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=15%3A2" target="_blank" class="project-box">
-                            <picture>
-                                <img src="images/oleep.png" alt="oleep">
-                            </picture>
-                            <h4>Full Stack OLEEP Project</h4>
-                            <h5><em>Figma, React, Typescript, Next.js, Firebase</em></h5>
-                            <p>
-                                I was one of three designers for the Outdoor Leadership and Environmental Education Program website.
-                                We conducted UX research by holding stakeholder interviews and user surveys to identify pain points in OLEEP's existing web presence and 
-                                revamped the old website. As a developer, I implemented a responsive UI with React/Next.js.
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
+    @keyframes slideInLeft {
+      0% {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
 
-        <!--Misc Section Start-->
+    /* Apply animations to hero elements */
+    .hero-greeting {
+      animation: circleIn 1.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      opacity: 0;
+    }
 
-        <section class="misc" id="misc">
-            <div class="content">
-                <div class="title"><span>Misc</span></div>
-                <div class="boxes">
-                    <div class="box">
-                            <picture>
-                                <img src="images/shoes.JPG" alt="shoes">
-                            </picture>
-                            <h5>Painted Dragon Shoes</h5>
-                    </div>
-                    <div class="box">
-                        <picture>
-                            <img src="images/waterbottle.jpg" alt="ensci">
-                        </picture>
-                        <h5>Enviornmental Club Design</h5>
-                    </div>
-                    <div class="box">
-                        <picture>
-                            <img src="images/hand.jpg" alt="hand">
-                        </picture>
-                        <h5>Skeleton Charcoal Study</h5>
-                    </div>
-                    <div class="box">
-                        <picture>
-                            <img src="images/embroidery.jpg" alt="study">
-                        </picture>
-                        <h5>Nezha Embroidery</h5>
-                    </div>
-                </div>
-            </div>
-        </section>
+    .hero h1 {
+      animation: fadeInUp 1s ease-out 0.3s both;
+    }
 
-        <!--Footer Section Start-->
-        <footer>
-            <div class="text">
-                <span>
-                    &#169; 2025 Sophie Shao. All Rights Reserved.
-                </span>
-            </div>
-        </footer>
+    .hero-subtitle {
+      animation: fadeInUp 1s ease-out 0.6s both;
+    }
 
+    .hero-copy p:nth-child(1) {
+      animation: slideInLeft 0.8s ease-out 0.9s both;
+    }
 
-    </body>
+    .hero-copy p:nth-child(2) {
+      animation: slideInLeft 0.8s ease-out 1.1s both;
+    }
+
+    .hero-copy p:nth-child(3) {
+      animation: slideInLeft 0.8s ease-out 1.3s both;
+    }
+
+    /* Staggered animation for work section */
+    .work-section > h2 {
+      animation: fadeIn 1s ease-out 0.5s both;
+    }
+
+    .project {
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .project:nth-child(1) {
+      animation-delay: 0.3s;
+    }
+    .project:nth-child(2) {
+      animation-delay: 0.6s;
+    }
+    .project:nth-child(3) {
+      animation-delay: 0.9s;
+    }
+    .project:nth-child(4) {
+      animation-delay: 1.2s;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <a class="brand" href="index.html" aria-label="Sophie Shao home">Sophie Shao</a>
+
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="nav-link active" href="#work">Work</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="marginalia.html">Marginalia</a>
+      <a class="nav-link" href="Sophie_Shao_Resume.pdf" target="_blank">Resume</a>
+      <a class="nav-link" href="mailto:sophie_shao@brown.edu">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="about">
+      <div class="hero-inner">
+        <div class="hero-greeting">
+          <svg viewBox="0 0 300 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <path id="curvePath" d="M 10 60 Q 80 20, 150 50 Q 220 80, 290 40" stroke="none"/>
+            </defs>
+            <text font-family="'Playfair Display', Georgia, serif" font-size="42" font-style="italic" font-weight="700" fill="#8f9d89">
+              <textPath href="#curvePath" startOffset="5%">Hi! I'm</textPath>
+            </text>
+          </svg>
+          <span class="fallback-text">Hi! I'm</span>
+        </div>
+        <h1>Sophie Shao</h1>
+        <p class="hero-subtitle">Applied Math-Computer Science</p>
+
+        <div class="hero-copy">
+          <p>Curious about people.</p>
+          <p>Excited by technology.</p>
+          <p>Obsessed with making the two work better together.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work">
+      <h2>My Work</h2>
+
+      <article class="project project-image-left">
+        <a href="https://apps.apple.com/us/app/ecoedventures/id6761586775" target="_blank" rel="noopener noreferrer" class="project-image-link">
+        <div class="project-image">
+          <img src="images/utmost-atmos.png" alt="Utmost Atmos mobile app screens">
+        </div>
+        </a>
+
+        <div class="project-content">
+          <h3>Utmost Atmos</h3>
+          <p>
+            Co-lead a team of 6 to build a nonprofit initiative app
+            connecting students with volunteer and scholarship
+            opportunities, while helping them track and report nearby
+            waste and recycling resources.
+          </p>
+          <div class="tags">
+            <span>React</span>
+            <span>UI/UX</span>
+            <span>Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project-image-right">
+        <div class="project-content">
+          <h3>Sketchy Business</h3>
+          <p>
+            Implemented CLIPasence, a generative computer vision
+            pipeline that converts photos into customizable pencil
+            sketches. Built a saliency-driven pipeline with two custom
+            MLPs to control fidelity and simplicity, then evaluated
+            results by testing whether LLMs could correctly identify
+            objects in the generated sketches.
+          </p>
+          <div class="tags">
+            <span>Python</span>
+            <span>Deep Learning</span>
+            <span>Computer Vision</span>
+          </div>
+        </div>
+        <a href="sketchy_business_poster.pdf" target="_blank" rel="noopener noreferrer" class="project-image-link">
+        <div class="project-image">
+          <img src="images/sketchy-business.png" alt="Sketchy Business research poster">
+        </div>
+        </a>
+      </article>
+
+      <article class="project project-image-left">
+        <a href="https://www.figma.com/proto/jHqC6tj3FW3P8N9Nmy6iiK/OLEEP-Design-Progress?node-id=15-2&p=f&t=ZDshruINwf63fo4z-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=15%3A2" target="_blank" rel="noopener noreferrer" class="project-image-link">
+        <div class="project-image">
+          <img src="images/oleep.png" alt="Outdoor Leadership and Environmental Program website">
+        </div>
+        </a>
+        <div class="project-content">
+          <h3>OLEEP Website</h3>
+          <p>
+            I was one of three designers and also served as a
+            developer for the Outdoor Leadership and Environmental
+            Education Program website. We conducted UX research and
+            user surveys to identify user pain points in their
+            existing web presence and revamped the old website using
+            React/Next.js.
+          </p>
+          <div class="tags">
+            <span>React</span>
+            <span>UI/UX</span>
+            <span>Figma</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project project-image-right">
+        <div class="project-content">
+          <h3>Depth-Based Portrait Filter</h3>
+          <p>
+            We sought to achieve a portrait mode filter in two
+            different ways: stereo vision and machine learning. In
+            comparing our results, we aimed to generate a better
+            understanding of the relative merits of each approach and
+            the factors that influence performance in each case.
+          </p>
+          <div class="tags">
+            <span>Python</span>
+            <span>PyTorch</span>
+            <span>Computer Vision</span>
+          </div>
+        </div>
+        <a href="https://github.com/sophie-shao/cv-final-project" target="_blank" rel="noopener noreferrer" class="project-image-link">
+        <div class="project-image depth-image">
+          <img src="images/depth.png" alt="Depth map visualization for portrait filter">
+        </div>
+        </a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer-main">
+      <div class="footer-intro">
+        <a class="footer-brand" href="index.html">Sophie Shao</a>
+        <p>applied math &amp; computer science, Brown<br>University</p>
+      </div>
+
+      <div class="footer-links">
+        <div>
+          <p class="footer-heading">SITE</p>
+          <a href="#work">Work</a>
+          <a href="about.html">About</a>
+          <a href="marginalia.html">Marginalia</a>
+          <a href="Sophie_Shao_Resume.pdf" target="_blank">Resume</a>
+          <a href="mailto:sophie_shao@brown.edu">Contact</a>
+        </div>
+
+        <div>
+          <p class="footer-heading">CONTACT</p>
+          <a href="mailto:sophie_shao@brown.edu">Email</a>
+          <a href="https://www.linkedin.com/in/sophiewshao/" aria-label="LinkedIn">LinkedIn</a>
+          <a href="https://github.com/sophie-shao" aria-label="Github">Github</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>bound &amp; printed, 2026 — made with care</p>
+    </div>
+  </footer>
+</body>
 </html>
